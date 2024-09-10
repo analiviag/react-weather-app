@@ -7,7 +7,12 @@ export default function Weather() {
       <form>
         <div className="row">
           <div className="col-9">
-            <input type="search" placeholder="Search for a city"></input>
+            <input
+              type="search"
+              placeholder="Search for a city"
+              size={80}
+              autoFocus="on"
+            ></input>
           </div>
           <div className="col-3">
             <button className="btn btn-primary">Search</button>
@@ -19,8 +24,12 @@ export default function Weather() {
           <img
             src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
             alt="Cloudy"
+            height={80}
+            width={80}
           ></img>
-          17°C
+          <span className="temperature">17</span>
+          <span className="unit-C">°C |</span>
+          <span className="unit-F">°F</span>
           <ul>
             <li>Precipitation: 3%</li>
             <li>Humidity: 84%</li>
@@ -28,9 +37,11 @@ export default function Weather() {
           </ul>
         </div>
         <div className="col-6">
-          <p>Weather</p>
-          <p>Monday 9:00</p>
-          <p>Cloudy</p>
+          <h1>Vancouver</h1>
+          <ul>
+            <li>Monday 9:00</li>
+            <li>Cloudy</li>
+          </ul>
         </div>
       </div>
     </div>
