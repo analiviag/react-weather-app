@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
 import axios from "axios";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
   function displayResponse(response) {
     console.log(response);
@@ -21,15 +22,24 @@ export default function Weather(props) {
 
   function search() {
     const apiKey = "bba264o26c1cdt003d73631d7a2a1f27";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(displayResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
   }
 
   if (weatherData.ready) {
     return (
       <div className="Weather">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-9">
               <input
@@ -38,6 +48,7 @@ export default function Weather(props) {
                 size={80}
                 autoFocus="on"
                 className="form-control"
+                onChange={handleCityChange}
               ></input>
             </div>
             <div className="col-3">
@@ -45,33 +56,7 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-        <div className="row">
-          <div className="col-6">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
-              alt="Cloudy"
-              height={80}
-              width={80}
-            ></img>
-            <span className="temperature">{weatherData.temperature}</span>
-            <span className="unit-C">°C |</span>
-            <span className="unit-F">°F</span>
-            <ul>
-              <li>Precipitation: 3%</li>
-              <li>Humidity: {weatherData.humidity}%</li>
-              <li>Wind: {weatherData.wind} km/h</li>
-            </ul>
-          </div>
-          <div className="col-6">
-            <h1>{weatherData.city}</h1>
-            <ul>
-              <li>
-                <FormattedDate date={weatherData.date} />
-              </li>
-              <li>{weatherData.description}</li>
-            </ul>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData} />
       </div>
     );
   } else {
