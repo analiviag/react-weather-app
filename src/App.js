@@ -8,7 +8,7 @@ export default function App() {
       <div className="container">
         <Weather defaultCity="Vancouver" />
 
-        <footer>
+        <footer className="small">
           This project was coded by Analivia Costa and is{" "}
           <a
             href="https://github.com/analiviag/react-weather-app"
