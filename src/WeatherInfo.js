@@ -6,12 +6,7 @@ export default function WeatherInfo(props) {
     <div className="WeatherInfo">
       <div className="row">
         <div className="col-6">
-          <img
-            src={props.data.iconUrl}
-            alt="Cloudy"
-            height={80}
-            width={80}
-          ></img>
+          <img src={props.data.iconUrl} height={80} width={80}></img>
           <span className="temperature">{props.data.temperature}</span>
           <span className="unit-C">°C |</span>
           <span className="unit-F">°F</span>
