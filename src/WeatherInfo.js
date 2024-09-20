@@ -7,7 +7,12 @@ export default function WeatherInfo(props) {
     <div className="WeatherInfo">
       <div className="row">
         <div className="col-6">
-          <img src={props.data.iconUrl} height={80} width={80}></img>
+          <img
+            src={props.data.iconUrl}
+            height={80}
+            width={80}
+            alt="today's forecast"
+          ></img>
 
           <WeatherUnit celsius={props.data.temperature} />
 
