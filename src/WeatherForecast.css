@@ -4,8 +4,7 @@
 }
 
 .WeatherForecast-icon {
-  padding: 1px;
-  border: none;
+  margin-top: 0 !important;
 }
 
 .WeatherForecast-temp {
