@@ -3,8 +3,18 @@
   margin-bottom: 1px;
 }
 
+.WeatherForecast .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .WeatherForecast-icon {
+  padding: 1px;
   margin-top: 0 !important;
+  padding: 0;
+  margin-left: 1px;
 }
 
 .WeatherForecast-temp {
@@ -13,5 +23,4 @@
 
 .WeatherForecast-min {
   opacity: 0.6;
-  margin-left: 5px;
 }
